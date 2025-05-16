@@ -95,7 +95,7 @@ int conferirSituacao (char tabuleiro[LINHA][COLUNA],const char* palavra) {
                             }
             //verificacao
                     if (achou){
-                        conferido[linha][coluna] == 1;
+                        conferido[linha][coluna] = 1;
                         passo++;
                     } else {
                         break; //nao achou a proxima letra
