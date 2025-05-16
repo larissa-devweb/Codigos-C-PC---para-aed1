@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
-//#include <stdbool.h>
 
 #define LINHA 3
 #define COLUNA 4
 
-// Movimentos para percorrer o tabuleiro : cima, baixo, esquerda, direita
+// Regras de busca:
+//Movimentos para percorrer o tabuleiro : cima, baixo, esquerda, direita
 int dx[] = { -1, 1, 0, 0 };
 int dy[] = { 0, 0, -1, 1 };
 
@@ -29,7 +29,8 @@ int main() {
 
     return 0;
 }
-//para ver se a posicao é valida e nao foi visitada
+//FUNÇAO para ver se a posicao é valida e nao foi usada (Não pode repetir a mesma célula durante a mesma tentativa de montar a palavra.)
+
 int percorrerTabuleiro (int linha, int coluna,int conferido[linha][coluna] ){
 if (linha >= 0 && linha < LINHA && coluna >= 0 && coluna < COLUNA && conferido[linha][coluna] == 0) {
         return 1;
@@ -87,7 +88,7 @@ int conferirSituacao (char tabuleiro[LINHA][COLUNA],const char* palavra) {
                             }
             //verificacao
                     if (achou){
-                        conferido[linha][coluna] = 1;
+                        conferido[linha][coluna] = 1; 
                         passo++;
                     } else {
                         break; //nao achou a proxima letra
