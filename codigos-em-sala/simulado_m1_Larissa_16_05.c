@@ -5,14 +5,6 @@
 #define LINHA 3
 #define COLUNA 4
 
-/*typedef struct {
-
-    int linhas;
-    int colunas;
-    int indicePalavras;
-    int conferido [LINHAS][COLUNAS];//se visitou ou conferiu a celula
-
-} Situacao;*/
 // Movimentos para percorrer o tabuleiro : cima, baixo, esquerda, direita
 int dx[] = { -1, 1, 0, 0 };
 int dy[] = { 0, 0, -1, 1 };
@@ -101,7 +93,7 @@ int conferirSituacao (char tabuleiro[LINHA][COLUNA],const char* palavra) {
                         break; //nao achou a proxima letra
                     }
 
-                    if (passo=tamanho) {
+                    if (passo == tamanho) {
                         return 1; //achou a palavra
                     }
                 }
