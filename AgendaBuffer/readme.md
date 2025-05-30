@@ -36,6 +36,12 @@ A lista de pessoas é armazenada como uma **lista encadeada** onde cada nó cont
 Mesmo o menu e as opções digitadas pelo usuário são armazenadas dentro do `pBuffer`.  
 Não há variáveis nem structs, apenas ponteiros e muito controle de memória!
 
+🌸 Explicações importantes:
+      1. Não usamos variáveis nem structs, só offsets com ponteiros.
+      2. Cada entrada na lista é alocada dinamicamente e ligada por um ponteiro no final.
+      3. Toda entrada temporária (nome, idade, email) é armazenada no pBuffer.
+      4. Ao listar ou buscar, usamos strcmp e cálculos de offsets para acessar dados.
+
 ### Feito com paciência, empenho e muitos ponteiros! 🌷🎀
 
 
