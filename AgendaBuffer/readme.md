@@ -40,7 +40,8 @@ Não há variáveis nem structs, apenas ponteiros e muito controle de memória!
       1. Não usamos variáveis nem structs, só offsets com ponteiros.
       2. Cada entrada na lista é alocada dinamicamente e ligada por um ponteiro no final.
       3. Toda entrada temporária (nome, idade, email) é armazenada no pBuffer.
-      4. Ao listar ou buscar, usamos strcmp e cálculos de offsets para acessar dados.
+      4. tornar mais dinamico, para que possa colcoar mais nomes ou afins, se necessario, usei strlen() após o scanf, e se ultrapassar o espaço atual, fazemos realloc.
+      
 
 ### Feito com paciência, empenho e muitos ponteiros! 🌷🎀
 
