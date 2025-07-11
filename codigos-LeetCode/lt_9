@@ -3,4 +3,38 @@ Exemplo 1:
 Entrada:  x = 121
  Saída:  verdadeiro
  Explicação:  121 é lido como 121 da esquerda para a direita e da direita para a esquerda.
- 
+ #include <stdbool.h> // Para usar o tipo bool com true/false
+
+/*
+ Função que verifica se um número inteiro é um palíndromo.
+ Parâmetros:
+    - x: número inteiro a ser verificado
+ Retorno:
+    - true (1) se for palíndromo
+    - false (0) caso contrário
+*/
+bool isPalindrome(int x) {
+    // Caso base: números negativos não são palíndromos
+    if (x < 0) return false;
+
+    // Números terminados em zero não são palíndromos (exceto o próprio zero)
+    if (x != 0 && x % 10 == 0) return false;
+
+    int revertido = 0; // Variável para armazenar o número revertido
+
+    // Reverte metade do número
+    while (x > revertido) {
+        int ultimo_digito = x % 10;              // Pega o último dígito de x
+        revertido = revertido * 10 + ultimo_digito; // Constrói o número revertido
+        x /= 10;                                  // Remove o último dígito de x
+    }
+
+    /*
+     Se o número original tinha número par de dígitos:
+        - x == revertido
+     Se o número original tinha número ímpar de dígitos:
+        - x == revertido/10 (remove o dígito central)
+    */
+    return (x == revertido || x == revertido / 10);
+}
+
