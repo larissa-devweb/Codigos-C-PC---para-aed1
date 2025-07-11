@@ -1,0 +1,6 @@
+Dado um inteiro x, retornar true se é um, e false de outra forma .
+Exemplo 1:
+Entrada:  x = 121
+ Saída:  verdadeiro
+ Explicação:  121 é lido como 121 da esquerda para a direita e da direita para a esquerda.
+ 
