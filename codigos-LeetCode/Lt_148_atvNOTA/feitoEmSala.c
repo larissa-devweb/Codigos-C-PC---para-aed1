@@ -34,11 +34,11 @@ struct ListNode* sortList(struct ListNode* head) {
     struct ListNode* slow = head;         // Anda 1 em 1
     struct ListNode* fast = head->next;   // Anda 2 em 2
 
-    // Aqui achamos o meio da lista
+    // Aqui achamos o meio da lista, usando 2 ponteiros auxiliares ao "mesmo tempo"
     //Quando fast chega ao final, slow está no meio e ai será cortado ali.
     while (fast && fast->next) {
-        slow = slow->next;           // move 1 passo
-        fast = fast->next->next;     // move 2 passos
+        slow = slow->next;           // move 1 passo, mesmo loop sendo para fast, o slow nao fica parado
+        fast = fast->next->next;     // move 2 passos, para garantir ser mais rapido que slow
     }
 
     // Agora o slow está no meio da lista
@@ -46,8 +46,8 @@ struct ListNode* sortList(struct ListNode* head) {
     slow->next = NULL;                 // corta a lista no meio 
 
     // Recursivamente ordena as duas metades 
-    struct ListNode* left = sortList(head);
-    struct ListNode* right = sortList(mid);
+    struct ListNode* left = sortList(head); //primeira parte
+    struct ListNode* right = sortList(mid); //segunda parte 
 
     // Mescla as duas listas ja ordenadas
     return merge(left, right);
