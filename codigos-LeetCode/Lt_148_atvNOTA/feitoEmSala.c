@@ -1,10 +1,10 @@
 // Função para mesclar duas listas ordenadas em uma só (padrão do merge)
 struct ListNode* merge(struct ListNode* l1, struct ListNode* l2) {
     // Cria um nó temporário só para facilitar o início da lista final
-    struct ListNode dummy;
-    struct ListNode* tail = &dummy; // Ponteiro para o fim da nova lista
+    struct ListNode temp;
+    struct ListNode* tail = &temp; // Ponteiro para o fim da nova lista
 
-    dummy.next = NULL; // Começa a lista vazia
+    temp.next = NULL; // Começa a lista vazia
 
     // Enquanto houver elementos nas duas listas
     while (l1 && l2) {
@@ -22,7 +22,7 @@ struct ListNode* merge(struct ListNode* l1, struct ListNode* l2) {
     if (l1) tail->next = l1;
     if (l2) tail->next = l2;
 
-    return dummy.next; // Retorna a cabeça da nova lista ordenada
+    return temp.next; // Retorna a cabeça da nova lista ordenada
 }
 
 // Função principal: ordena a lista com Merge Sort
@@ -35,19 +35,20 @@ struct ListNode* sortList(struct ListNode* head) {
     struct ListNode* fast = head->next;   // Anda 2 em 2
 
     // Aqui achamos o meio da lista
+    //Quando fast chega ao final, slow está no meio e ai será cortado ali.
     while (fast && fast->next) {
         slow = slow->next;           // move 1 passo
         fast = fast->next->next;     // move 2 passos
     }
 
     // Agora o slow está no meio da lista
-    struct ListNode* mid = slow->next; // meio verdadeiro (início da segunda metade)
-    slow->next = NULL;                 // corta a lista no meio
+    struct ListNode* mid = slow->next; // meio/mid = (início da segunda metade)
+    slow->next = NULL;                 // corta a lista no meio 
 
-    // Recursivamente ordena as duas metades
+    // Recursivamente ordena as duas metades 
     struct ListNode* left = sortList(head);
     struct ListNode* right = sortList(mid);
 
-    // Mescla as duas listas ordenadas
+    // Mescla as duas listas ja ordenadas
     return merge(left, right);
 }
